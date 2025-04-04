@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Product, ProductsResponse } from '@/types/product';
-import { useProductStore } from '@/store/productStore';
+import useProductStore from '@/store/productStore';
 
 const API_URL = 'https://api.escuelajs.co/api/v1';
 const ITEMS_PER_PAGE = 10;

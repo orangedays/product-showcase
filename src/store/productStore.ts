@@ -16,7 +16,7 @@ interface ProductStore {
   setScrollPosition: (position: number) => void;
 }
 
-export const useProductStore = create<ProductStore>()(
+const useProductStore = create<ProductStore>()(
   persist(
     set => ({
       ...INITIAL_STATE,
@@ -29,3 +29,5 @@ export const useProductStore = create<ProductStore>()(
     },
   ),
 );
+
+export default useProductStore;
