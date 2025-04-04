@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useProducts } from '@/hooks/api/useProducts';
 import ProductList from '@/components/ProductList';
 import Pagination from '@/components/Pagination';
+import ProductDetail from '@/components/ProductDetail';
+import Loading from '@/components/common/Loading';
 import useProductStore from '@/store/productStore';
 import useScrollPosition from '@/hooks/useScrollPosition';
 
@@ -24,11 +26,7 @@ function ProductsPage() {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl">Loading...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   const totalPages = Math.ceil((data?.total || 0) / 10);
@@ -45,7 +43,7 @@ function ProductsPage() {
                 <ProductList key={product.id} product={product} />
               ))}
             </div>
-
+            <ProductDetail />
             <div className="mt-12 mb-8">
               <Pagination
                 currentPage={currentPage}

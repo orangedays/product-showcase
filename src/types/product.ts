@@ -23,7 +23,3 @@ export interface ProductsResponse {
   products: Product[];
   total: number;
 }
-
-export interface ProductDetailResponse {
-  product: Product;
-}

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Tag from '@/components/common/Tag';
 import { Product } from '@/types/product';
 import useProductStore from '@/store/productStore';
 
@@ -20,12 +21,10 @@ const ProductList = ({ product }: ProductListProps) => {
         </div>
         <div className="flex-1 p-6">
           <div className="mb-4 flex items-start gap-2">
-            <span className="relative top-[2px] px-3 py-1 text-xs font-medium bg-blue-50 text-blue-600 rounded-full">
-              {product.category.name}
-            </span>
+            <Tag>{product.category.name}</Tag>
             <h3 className="text-xl">{product.title}</h3>
           </div>
-          <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
+          <p className="text-gray-600 mb-4 text-sm line-clamp-2">{product.description}</p>
           <p className="text-2xl font-bold text-blue-600">${product.price}</p>
         </div>
       </div>
