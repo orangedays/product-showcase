@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Loading from '@/components/common/Loading';
 import Tag from '@/components/common/Tag';
+import FallbackImage from '@/components/common/FallbackImage';
 import { useProduct } from '@/hooks/api/useProducts';
 import useProductStore from '@/store/productStore';
 
@@ -28,14 +28,14 @@ const ProductDetail = () => {
         <div className="space-y-6">
           <div className="space-y-4">
             {product.images.map((image, index) => (
-              <div key={index} className="relative h-64 w-full overflow-hidden rounded-lg">
-                <Image
-                  src={image}
-                  alt={`${product.title} - Image ${index + 1}`}
-                  fill
-                  className="object-cover"
+            
+                <FallbackImage 
+                  key={index}
+                  src={image} 
+                  alt={`${product.title} - Image ${index + 1}`} 
+                  className="w-full"
                 />
-              </div>
+     
             ))}
           </div>
           <div className="space-y-4">

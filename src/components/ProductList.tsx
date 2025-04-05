@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Tag from '@/components/common/Tag';
+import FallbackImage from '@/components/common/FallbackImage';
 import { Product } from '@/types/product';
 import useProductStore from '@/store/productStore';
 
@@ -16,9 +16,13 @@ const ProductList = ({ product }: ProductListProps) => {
       onClick={() => setSelectedProductId(product.id)}
     >
       <div className="flex">
-        <div className="relative w-56 h-56 flex-shrink-0">
-          <Image src={product.images[0]} alt={product.title} fill className="object-cover" />
-        </div>
+        <FallbackImage
+          src={product.images[0]}
+          alt={product.title}
+          className="w-56 h-56  flex-shrink-0"
+          imageClassName="object-cover"
+        />
+
         <div className="flex-1 p-6">
           <div className="mb-4 flex items-start gap-2">
             <Tag>{product.category.name}</Tag>
