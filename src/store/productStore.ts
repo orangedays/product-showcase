@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   selectedProductId: null,
   currentPage: 0,
   scrollPosition: 0,
+  hydrated: false,
 } as const;
 
 interface ProductStore {
@@ -14,6 +15,8 @@ interface ProductStore {
   setCurrentPage: (page: number) => void;
   scrollPosition: number;
   setScrollPosition: (position: number) => void;
+  hydrated: boolean;
+  setHydrated: (state: boolean) => void;
 }
 
 const useProductStore = create<ProductStore>()(
@@ -23,9 +26,13 @@ const useProductStore = create<ProductStore>()(
       setSelectedProductId: id => set({ selectedProductId: id }),
       setCurrentPage: page => set({ currentPage: page, scrollPosition: 0 }),
       setScrollPosition: position => set({ scrollPosition: position }),
+      setHydrated: state => set({ hydrated: state }),
     }),
     {
       name: 'product-store',
+      onRehydrateStorage: () => state => {
+        state?.setHydrated(true);
+      },
     },
   ),
 );

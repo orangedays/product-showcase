@@ -30,10 +30,12 @@ const fetchProductById = async (id: number): Promise<Product> => {
 
 export const useProducts = () => {
   const currentPage = useProductStore(state => state.currentPage);
+  const hydrated = useProductStore(state => state.hydrated);
 
   return useQuery({
     queryKey: ['products', currentPage],
     queryFn: () => fetchProducts(currentPage),
+    enabled: hydrated,
   });
 };
 
