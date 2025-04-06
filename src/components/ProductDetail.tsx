@@ -33,7 +33,7 @@ const ProductDetail = () => {
                   key={index}
                   src={image} 
                   alt={`${product.title} - Image ${index + 1}`} 
-                  className="w-full"
+                  className="w-full min-h-[200px]"
                 />
      
             ))}
